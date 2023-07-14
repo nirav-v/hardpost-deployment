@@ -1,0 +1,20 @@
+{
+  "name": "hardpost-deployment",
+  "version": "1.0.0",
+  "description": "contains both client and server code for deployment setup",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nirav-v/hardpost-deployment.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nirav-v/hardpost-deployment/issues"
+  },
+  "homepage": "https://github.com/nirav-v/hardpost-deployment#readme"
+}
