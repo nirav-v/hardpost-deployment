@@ -23,6 +23,14 @@
     "@vitejs/plugin-react": "^4.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "vite": "^4.4.0"
+    "vite": "^4.4.0",
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.16.3",
+    "express-session": "^1.17.3",
+    "mysql2": "^3.3.3",
+    "sequelize": "^6.3.5"
   }
 }
