@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/nirav-v/hardpost-deployment/issues"
   },
-  "homepage": "https://github.com/nirav-v/hardpost-deployment#readme"
+  "homepage": "https://github.com/nirav-v/hardpost-deployment#readme",
+  "dependencies": {
+    "vite": "^4.4.0",
+    "@vitejs/plugin-react": "^4.0.1"
+  }
 }
