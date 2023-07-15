@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd client && npm run build",
-    "start": "cd server && npm run start & cd client && npm run build"
+    "start": "cd server && npm run start & cd client && npm run start"
   },
   "repository": {
     "type": "git",
@@ -21,9 +21,6 @@
   "homepage": "https://github.com/nirav-v/hardpost-deployment#readme",
   "dependencies": {
     "@vitejs/plugin-react": "^4.0.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "vite": "^4.4.0",
     "bcrypt": "^5.1.0",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
@@ -31,6 +28,10 @@
     "express": "^4.16.3",
     "express-session": "^1.17.3",
     "mysql2": "^3.3.3",
-    "sequelize": "^6.3.5"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sequelize": "^6.3.5",
+    "serve": "^14.2.0",
+    "vite": "^4.4.0"
   }
 }
