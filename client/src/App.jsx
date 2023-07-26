@@ -16,10 +16,15 @@ function App() {
 
   useEffect(() => {
     const checkAuth = async () => {
-      const response = await fetch("/api/user/login");
-      const result = await response.json();
-      console.log(result);
-      if (result.data.userId) setLoggedIn(true);
+      fetch("/api/user/login")
+        .then((res) => {
+          console.log(res);
+          res.json();
+        })
+        .then((result) => {
+          if (result.data.userId) setLoggedIn(true);
+        })
+        .catch((err) => console.log(err));
     };
     checkAuth();
   }, []);
