@@ -17,11 +17,9 @@ function App() {
   useEffect(() => {
     const checkAuth = async () => {
       fetch("/api/user/login")
-        .then((res) => {
-          console.log(res);
-          res.json();
-        })
+        .then((res) => res.json())
         .then((result) => {
+          console.log(result);
           if (result.data.userId) setLoggedIn(true);
         })
         .catch((err) => console.log(err));
