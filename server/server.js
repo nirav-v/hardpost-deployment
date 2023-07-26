@@ -19,7 +19,7 @@ const shopRoutes = require("./controllers/shop-routes");
 app.use(cors()); //allow for client side requests without getting CORS error
 app.use(bodyParser.urlencoded({ extended: false })); // to parse incoming req body
 // serve built vite app from dist folder
-app.use(process.cwd() + "/dist");
+app.use(express.static(process.cwd() + "/dist"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json()); // needed to send json req.body in insomnia post requests
 
