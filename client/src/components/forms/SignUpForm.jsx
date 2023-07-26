@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function SignUpForm() {
+function SignUpForm({ loggedIn, setLoggedIn }) {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,7 +12,7 @@ function SignUpForm() {
     event.preventDefault();
     // validate form inputs
     if (password.length > 0 && password === confirmPassword) {
-      const url = "http://localhost:3000/api/user/signup";
+      const url = "/api/user/signup";
       const body = JSON.stringify({
         username: userName,
         email: email,
@@ -20,7 +20,7 @@ function SignUpForm() {
       }); // request body can only be sent as a string, parsed back to object by the server
       console.log("body: ", body);
       // send post request to server
-      const request = await fetch(url, {
+      const response = await fetch(url, {
         method: "POST",
         body: body,
         headers: {
@@ -28,6 +28,17 @@ function SignUpForm() {
         },
       });
 
+      console.log(response);
+      const result = await response.json();
+      console.log(result);
+
+      setEmail("");
+      setPassword("");
+      setConfirmPassword("");
+      setUserName("");
+
+      if (response.status === 201) setLoggedIn(true);
+      console.log("loggedIn: ", loggedIn);
       console.log("signup request sent");
     }
   };

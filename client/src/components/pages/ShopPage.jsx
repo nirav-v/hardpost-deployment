@@ -1,3 +1,5 @@
+import ItemPage from "./ItemPage";
+
 import { useState, useEffect } from "react";
 
 function ShopPage() {
@@ -5,7 +7,7 @@ function ShopPage() {
 
   useEffect(() => {
     // Make the fetch request here
-    fetch("http://localhost:3000/shop")
+    fetch("/shop")
       .then((response) => response.json())
       .then((data) => {
         // Handle the response data
@@ -18,13 +20,30 @@ function ShopPage() {
       });
   }, []);
 
+  const handleItemClick = (itemId) => {
+    console.log("click");
+  };
+
   return (
     <div>
       <h1>ShopPage</h1>
       <p>Items:</p>
-      {items.map((item) => (
-        <p key={item.id}>{item.name}</p>
-      ))}
+      {items.length ? (
+        <div>
+          {items.map((item) => (
+            <div key={item.id} onClick={() => handleItemClick(item.id)}>
+              {/* <a href={`/shop/${item.id}`}>see details</a> */}
+              <ItemPage
+                itemId={item.id}
+                name={item.name}
+                category={item.category}
+                description={item.description}
+                price={item.price}
+              />
+            </div>
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 }
