@@ -1,7 +1,7 @@
 const sequelize = require("./config/database");
-const User = require("./models/User");
+const { User, Cart, CartItem, Order, Item, OrderItem } = require("./models");
 
-const usersData = [
+const userData = [
   {
     username: "User 1",
     email: "user1@example.com",
@@ -20,12 +20,13 @@ const usersData = [
 ];
 
 const seedDB = async () => {
-  await sequelize.sync();
+  await sequelize.sync({ force: true });
 
-  const users = await User.bulkCreate(usersData, {
-    individualHooks: true,
-    returning: true,
-  });
+  for (let user of userData) {
+    const newUser = await User.create(user);
+    const cart = await newUser.getCart();
+    if (!cart) await newUser.createCart();
+  }
 
   process.exit(0);
 };
