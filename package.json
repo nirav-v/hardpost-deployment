@@ -30,6 +30,7 @@
     "mysql2": "^3.3.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.14.2",
     "sequelize": "^6.3.5",
     "serve": "^14.2.0",
     "vite": "^4.4.0"
