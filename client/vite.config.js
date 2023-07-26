@@ -6,8 +6,8 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      "/api": "https://hardpost-02998f60f4cf.herokuapp.com", // Replace with your backend server URL
-      "/shop": "https://hardpost-02998f60f4cf.herokuapp.com",
+      "/api": "https://hardpost-02998f60f4cf.herokuapp.com/", // Replace with your backend server URL
+      "/shop": "https://hardpost-02998f60f4cf.herokuapp.com/",
     },
   },
 });
