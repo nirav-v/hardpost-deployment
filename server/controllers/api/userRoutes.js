@@ -1,6 +1,11 @@
 const router = require("express").Router();
 const { User, Cart } = require("../../models/");
 
+// GET Logged in user
+router.get("/login", async (req, res) => {
+  res.send({ data: req.session });
+});
+
 // SIGNUP
 router.post("/signup", async (req, res) => {
   console.log("BODY ", req.body);
@@ -13,7 +18,7 @@ router.post("/signup", async (req, res) => {
   });
 
   if (existingUser) {
-    return res.send("An account with this email already exists");
+    return res.status(401).send({ error: "account already exists" });
   }
 
   const newUser = await User.create({
@@ -30,8 +35,7 @@ router.post("/signup", async (req, res) => {
   req.session.save(function (err) {
     if (err) return next(err);
   });
-  console.log(req.session);
-  return res.json(req.session);
+  return res.status(201).send(req.session);
 });
 
 // LOGIN
@@ -44,8 +48,9 @@ router.post("/login", async (req, res) => {
     },
   });
 
-  if (!existingUser) return res.send("incorrect credentials");
-
+  if (!existingUser) {
+    return res.status(404).send({ error: "incorrect credentials" });
+  }
   // compare password using instance method defined on user model
   if (existingUser.checkPassword(req.body.password, existingUser.password)) {
     // set and save logged in user on session object
@@ -53,10 +58,11 @@ router.post("/login", async (req, res) => {
     req.session.save(function (err) {
       if (err) return next(err);
     });
-    console.log("session: ", req.session);
-    return res.json(req.session);
+    console.log(req.session);
+    return res.status(200).send(req.session);
   }
-  return res.send("Incorrect credentials");
+  // if wrong password
+  return res.status(404).send({ error: "incorrect credentials" });
 });
 
 // LOGOUT
@@ -64,7 +70,7 @@ router.get("/logout", async (req, res, next) => {
   if (req.session.userId) {
     await req.session.destroy((err) => console.log(err));
     console.log("session:", req.session);
-    return res.send("logged out");
+    return res.redirect("/");
   } else {
     return res.send("how can you log out if you're not logged in?");
   }

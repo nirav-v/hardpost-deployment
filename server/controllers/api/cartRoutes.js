@@ -11,6 +11,8 @@ router.get("/cart", async (req, res, next) => {
 
 // adding item to cart
 router.post("/cart", async (req, res, next) => {
+  if (!req.session.userId)
+    return res.status(401).send({ unauthorized: "please log in first" });
   const itemId = req.body.itemId;
   const cart = await Cart.findOne({
     where: {
@@ -37,7 +39,7 @@ router.post("/cart", async (req, res, next) => {
 
 router.post("/cart/delete-item", async (req, res, next) => {
   const loggedInUser = await User.findByPk(req.session.userId);
-  const itemId = req.body.id;
+  const itemId = req.body.itemId;
   const cart = await loggedInUser.getCart(); // get the users cart
   const cartItems = await cart.getItems({ where: { id: itemId } }); // get items from user's cart matching the req body id - returns array of matching items
   // delete that item from the cartItems table

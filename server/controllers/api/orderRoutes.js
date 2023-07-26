@@ -3,8 +3,10 @@ const { User } = require("../../models");
 
 router.get("/orders", async (req, res, next) => {
   const loggedInUser = await User.findByPk(req.session.userId);
-  const orders = await loggedInUser.getOrders({ include: ["items"] }); // tells sequelize to also load all items associated with each order
-  res.json(orders);
+  const orders = await loggedInUser.getOrders({
+    include: ["items"],
+  }); // tells sequelize to also load all items associated with each order
+  res.send(orders);
 });
 
 router.post("/create-order", async (req, res, next) => {
@@ -20,7 +22,9 @@ router.post("/create-order", async (req, res, next) => {
     })
   );
   await cart.setItems(null); //clear user's cart after order is placed
-  res.json(cart);
+  const updatedItems = await cart.getItems();
+  console.log(updatedItems);
+  res.status(201).send(updatedItems);
 });
 
 module.exports = router;
