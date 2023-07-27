@@ -28,7 +28,7 @@ function addItemForm() {
       setDescription(""),
       setImage(null);
 
-    window.location.reload(); // to show the new items?
+    // window.location.reload(); // to show the new items?
   };
 
   return (
