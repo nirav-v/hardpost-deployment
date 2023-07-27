@@ -3,27 +3,23 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
 export default ({ mode }) => {
-  const isProduction = mode === "production";
-
-  const proxyTarget = isProduction
-    ? "https://hardpost-02998f60f4cf.herokuapp.com/"
-    : "http://localhost:3000"; // Change the port to match your local backend port
-
   return defineConfig({
     plugins: [react()],
-
+    build: {
+      manifest: true,
+      rollupOptions: {
+        input: "./src/main.jsx",
+      },
+    },
+    // server: {
+    //   origin: "http://localhost",
+    //   port: 3000,
+    // },
     server: {
       proxy: {
-        "/api": {
-          target: proxyTarget,
-          changeOrigin: true,
-          secure: isProduction,
-        },
-        "/shop": {
-          target: proxyTarget,
-          changeOrigin: true,
-          secure: isProduction,
-        },
+        "/api": "https://gentle-spire-83185-d5ea8d952a7d.herokuapp.com",
+
+        "/shop": "https://gentle-spire-83185-d5ea8d952a7d.herokuapp.com",
       },
     },
   });
