@@ -12,7 +12,8 @@ function SignUpForm({ loggedIn, setLoggedIn }) {
     event.preventDefault();
     // validate form inputs
     if (password.length > 0 && password === confirmPassword) {
-      const url = "/api/user/signup";
+      const url =
+        "https://gentle-spire-83185-d5ea8d952a7d.herokuapp.com//api/user/signup";
       const body = JSON.stringify({
         username: userName,
         email: email,
