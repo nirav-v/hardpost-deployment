@@ -7,7 +7,8 @@ function LoginForm({ loggedIn, setLoggedIn }) {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const url = "/api/user/login";
+    const url =
+      "https://gentle-spire-83185-d5ea8d952a7d.herokuapp.com/api/user/login";
     const body = JSON.stringify({
       email: email,
       password: password,

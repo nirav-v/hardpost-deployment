@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 function OrdersPage() {
   const [orders, setOrders] = useState([]);
   useEffect(() => {
-    fetch("/api/orders")
+    fetch("https://gentle-spire-83185-d5ea8d952a7d.herokuapp.com/api/orders")
       .then((res) => res.json())
       .then((orders) => setOrders(orders));
   }, []);

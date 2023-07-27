@@ -9,7 +9,8 @@ function addItemForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const url = "/api/add-item";
+    const url =
+      "https://gentle-spire-83185-d5ea8d952a7d.herokuapp.com/api/add-item";
     const body = JSON.stringify({ name, category, price, description, image });
     const response = await fetch(url, {
       method: "POST",

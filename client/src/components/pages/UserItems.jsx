@@ -5,7 +5,7 @@ function UserItems() {
 
   // function to fetch all userItems and update state
   const fetchItems = () => {
-    fetch("/api/get-items")
+    fetch("https://gentle-spire-83185-d5ea8d952a7d.herokuapp.com/api/get-items")
       .then((res) => res.json())
       .then((data) => {
         setUserItems(data);
@@ -20,13 +20,16 @@ function UserItems() {
   const handleRemoveItemClick = async (itemId) => {
     // grab the item id and send a fetch request to the delete-item route
     console.log(itemId);
-    const deleteItem = await fetch("/api/delete-item", {
-      method: "POST",
-      body: JSON.stringify({ itemId }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const deleteItem = await fetch(
+      "https://gentle-spire-83185-d5ea8d952a7d.herokuapp.com/api/delete-item",
+      {
+        method: "POST",
+        body: JSON.stringify({ itemId }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     fetchItems();
   };

@@ -4,7 +4,7 @@ function CartPage() {
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
-    fetch("/api/cart")
+    fetch("https://gentle-spire-83185-d5ea8d952a7d.herokuapp.com/api/cart")
       .then((res) => res.json())
       .then((data) => setCart(data));
   }, []);
@@ -23,9 +23,12 @@ function CartPage() {
 
   const handleOrderClick = () => {
     console.log("click");
-    fetch("/api/create-order", {
-      method: "POST",
-    })
+    fetch(
+      "https://gentle-spire-83185-d5ea8d952a7d.herokuapp.com/api/create-order",
+      {
+        method: "POST",
+      }
+    )
       .then((res) => res.json())
       .then((updatedItems) => {
         console.log(updatedItems);
