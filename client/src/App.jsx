@@ -17,7 +17,7 @@ function App() {
   useEffect(() => {
     const checkAuth = async () => {
       fetch(
-        "https://gentle-spire-83185-d5ea8d952a7d.herokuapp.com/api/user/login"
+        "https://hardpost-02998f60f4cf.herokuapp.com/https://gentle-spire-83185-d5ea8d952a7d.herokuapp.com/api/user/login"
       )
         .then((res) => res.json())
         .then((result) => {
