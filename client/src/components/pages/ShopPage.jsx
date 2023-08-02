@@ -7,7 +7,9 @@ function ShopPage() {
 
   useEffect(() => {
     // Make the fetch request here
-    fetch("https://gentle-spire-83185-d5ea8d952a7d.herokuapp.com/shop")
+    fetch("https://gentle-spire-83185-d5ea8d952a7d.herokuapp.com/shop", {
+      credentials: "include",
+    })
       .then((response) => response.json())
       .then((data) => {
         // Handle the response data
