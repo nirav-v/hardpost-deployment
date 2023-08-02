@@ -42,7 +42,7 @@ function App() {
         </div>
       ) : (
         <div>
-          <a href="https://hardpost-02998f60f4cf.herokuapp.com/api/user/logout">
+          <a href="https://gentle-spire-83185-d5ea8d952a7d.herokuapp.com/api/user/logout">
             Logout
           </a>
 
