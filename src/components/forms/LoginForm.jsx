@@ -19,6 +19,7 @@ function LoginForm({ loggedIn, setLoggedIn }) {
       headers: {
         "Content-Type": "application/json", // tells server that data is in json format
       },
+      credentials: "include",
     });
 
     console.log(response);
