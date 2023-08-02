@@ -16,7 +16,10 @@ function App() {
 
   // fetch the cookie from the server if user is logged in
   const checkAuth = async () => {
-    fetch("/api/user/login", { credentials: "include" })
+    fetch(
+      "https://gentle-spire-83185-d5ea8d952a7d.herokuapp.com/api/user/login",
+      { credentials: "include" }
+    )
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
