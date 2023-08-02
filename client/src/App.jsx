@@ -14,18 +14,21 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   console.log("loggedIn ", loggedIn);
 
+  // fetch the cookie from the server if user is logged in
+  const checkAuth = async () => {
+    fetch(
+      "https://gentle-spire-83185-d5ea8d952a7d.herokuapp.com/api/user/login",
+      { credentials: "include" }
+    )
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+        if (result.data.userId) setLoggedIn(true);
+      })
+      .catch((err) => console.log(err));
+  };
+
   useEffect(() => {
-    const checkAuth = async () => {
-      fetch(
-        "https://gentle-spire-83185-d5ea8d952a7d.herokuapp.com/api/user/login"
-      )
-        .then((res) => res.json())
-        .then((result) => {
-          console.log(result);
-          if (result.data.userId) setLoggedIn(true);
-        })
-        .catch((err) => console.log(err));
-    };
     checkAuth();
   }, []);
 
@@ -39,7 +42,7 @@ function App() {
         </div>
       ) : (
         <div>
-          <a href="https://gentle-spire-83185-d5ea8d952a7d.herokuapp.com/api/user/logout">
+          <a href="https://hardpost-02998f60f4cf.herokuapp.com/api/user/logout">
             Logout
           </a>
 
