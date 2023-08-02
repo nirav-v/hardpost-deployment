@@ -39,7 +39,9 @@ function App() {
         </div>
       ) : (
         <div>
-          <a href="api/user/logout">Logout</a>
+          <a href="https://gentle-spire-83185-d5ea8d952a7d.herokuapp.com/api/user/logout">
+            Logout
+          </a>
 
           <Routes>
             <Route path="/" element={<ShopPage />} />
