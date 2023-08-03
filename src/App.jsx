@@ -18,7 +18,7 @@ function App() {
   const checkAuth = async () => {
     fetch(
       "https://gentle-spire-83185-d5ea8d952a7d.herokuapp.com/api/user/login",
-      { credentials: "same-origin" }
+      { credentials: "include" }
     )
       .then((res) => res.json())
       .then((result) => {
