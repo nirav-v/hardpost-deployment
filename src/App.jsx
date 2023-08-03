@@ -14,17 +14,6 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   console.log("loggedIn ", loggedIn);
 
-  const saveSession = () => {
-    fetch("https://gentle-spire-83185-d5ea8d952a7d.herokuapp.com/set-cookie", {
-      credentials: "include",
-    })
-      .then((res) => res.json())
-      .then((result) => console.log(result));
-  };
-
-  // try to resave session once we get response with cookie on it
-  saveSession();
-
   // fetch the cookie from the server if user is logged in
   const checkAuth = async () => {
     fetch(
