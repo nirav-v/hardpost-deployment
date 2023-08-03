@@ -34,6 +34,16 @@ function App() {
     checkAuth();
   }, []);
 
+  const saveSession = () => {
+    fetch("https://gentle-spire-83185-d5ea8d952a7d.herokuapp.com/set-cookie")
+      .then((res) => res.json())
+      .then((result) => console.log(result));
+  };
+  // try to resave session once we get response with cookie on it
+  useEffect(() => {
+    saveSession();
+  }, []);
+
   return (
     <div>
       <NavBar />
