@@ -20,6 +20,9 @@ function App() {
       .then((result) => console.log(result));
   };
 
+  // try to resave session once we get response with cookie on it
+  saveSession();
+
   // fetch the cookie from the server if user is logged in
   const checkAuth = async () => {
     fetch(
@@ -32,8 +35,6 @@ function App() {
       .then((result) => {
         console.log(result);
         if (result.data.userId) {
-          // try to resave session once we get response with cookie on it
-          saveSession();
           setLoggedIn(true);
         }
       })
