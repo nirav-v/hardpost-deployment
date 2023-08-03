@@ -14,6 +14,12 @@ function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   console.log("loggedIn ", loggedIn);
 
+  const saveSession = () => {
+    fetch("https://gentle-spire-83185-d5ea8d952a7d.herokuapp.com/set-cookie")
+      .then((res) => res.json())
+      .then((result) => console.log(result));
+  };
+
   // fetch the cookie from the server if user is logged in
   const checkAuth = async () => {
     fetch(
@@ -25,7 +31,11 @@ function App() {
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
-        if (result.data.userId) setLoggedIn(true);
+        if (result.data.userId) {
+          setLoggedIn(true);
+          // try to resave session once we get response with cookie on it
+          saveSession();
+        }
       })
       .catch((err) => console.log(err));
   };
@@ -33,14 +43,6 @@ function App() {
   useEffect(() => {
     checkAuth();
   }, []);
-
-  const saveSession = () => {
-    fetch("https://gentle-spire-83185-d5ea8d952a7d.herokuapp.com/set-cookie")
-      .then((res) => res.json())
-      .then((result) => console.log(result));
-  };
-  // try to resave session once we get response with cookie on it
-  saveSession();
 
   return (
     <div>
