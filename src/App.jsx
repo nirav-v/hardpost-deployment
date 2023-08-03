@@ -40,9 +40,7 @@ function App() {
       .then((result) => console.log(result));
   };
   // try to resave session once we get response with cookie on it
-  useEffect(() => {
-    saveSession();
-  }, []);
+  saveSession();
 
   return (
     <div>
