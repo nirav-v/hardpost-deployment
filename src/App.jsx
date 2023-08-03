@@ -15,7 +15,9 @@ function App() {
   console.log("loggedIn ", loggedIn);
 
   const saveSession = () => {
-    fetch("https://gentle-spire-83185-d5ea8d952a7d.herokuapp.com/set-cookie")
+    fetch("https://gentle-spire-83185-d5ea8d952a7d.herokuapp.com/set-cookie", {
+      credentials: "include",
+    })
       .then((res) => res.json())
       .then((result) => console.log(result));
   };
