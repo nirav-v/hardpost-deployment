@@ -32,9 +32,9 @@ function App() {
       .then((result) => {
         console.log(result);
         if (result.data.userId) {
-          setLoggedIn(true);
           // try to resave session once we get response with cookie on it
           saveSession();
+          setLoggedIn(true);
         }
       })
       .catch((err) => console.log(err));
