@@ -20,10 +20,6 @@ function App() {
       "https://gentle-spire-83185-d5ea8d952a7d.herokuapp.com/api/user/login",
       {
         credentials: "include",
-        headers: {
-          "Access-Control-Allow-Origin":
-            "https://main--gorgeous-duckanoo-f2f18a.netlify.app",
-        },
       }
     )
       .then((res) => res.json())
